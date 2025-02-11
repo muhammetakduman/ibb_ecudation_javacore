@@ -1,4 +1,4 @@
-package org.example._2week;
+package org.example._1_exjava;
 
 public class _AutoBoxing_boxing {
     public static void main(String[] args) {

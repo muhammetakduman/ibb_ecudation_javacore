@@ -1,4 +1,4 @@
-package org.example._2week;
+package org.example._1_exjava;
 import java.util.Scanner;
 public class ExProgramFact {
     public static void main(String[] args) {
