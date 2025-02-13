@@ -17,6 +17,7 @@ public class _09_10_example {
                 System.out.println("Tek Sayıdır");
             scanner.close();
         }
-
+        ;
     }
 }
+
