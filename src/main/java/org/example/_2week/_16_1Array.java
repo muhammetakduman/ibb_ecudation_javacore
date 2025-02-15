@@ -18,5 +18,6 @@ public class _16_1Array {
     //psvm
     public static void main(String[] args) {
         arrayMethod1();
+
     }
 }//endclass
