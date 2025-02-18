@@ -44,7 +44,7 @@ public class _15_3_LocalDateTime {
                 .withMinute(44)
                 .withSecond(23);
         //System.out.println(now);
-        System.out.println("Normal Tarih: "+now);
+        System.out.println(_15_4_SpecialColor.YELLOW +"Normal Tarih: "+now);
         System.out.println("Değiştirilmiş Tarih: "+newData.format(formatter));
     }
 
