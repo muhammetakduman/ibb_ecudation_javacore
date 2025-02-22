@@ -3,55 +3,60 @@ package org.example.project_step1_file;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
-
+import lombok.ToString;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Date;
 
-
 // LOMBOK
 @AllArgsConstructor
 @Builder
+@ToString
 @EqualsAndHashCode
 
-
+// Student
 public class StudentDto implements Serializable {
 
-    //Serileştirme
-    private static final long serialVersionUID = 5564564654652L;
+    // Serileştirme
+    private static final long serialVersionUID = 5563646556456565465L;
 
+    // Field
     private Integer id;
     private String name;
     private String surname;
     private LocalDate birthDate;
     private Date createdDate;
-    private Double grade;
+    private Double grade; // başarı puanı
 
-    // static (1 defa)
+    // static (Nesne boyunca 1 kere oluşturulur)
     static {
 
     }
 
-    //parametresiz constructor
+    // Parametresiz Constructor
     public StudentDto() {
     }
 
-
-    //parametleri consturctor
-    public StudentDto(Double grade, LocalDate birthDate, String surname, String name, Integer id) {
-        this.grade = grade;
-        this.birthDate = birthDate;
-        this.surname = surname;
-        this.name = name;
+    // Parametreli Constructor
+    public StudentDto(Integer id, String name, String surname, LocalDate birthDate, Double grade) {
         this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.birthDate = birthDate;
+        this.grade = grade;
     }
 
+    // Metotlar
 
-    //Methods
+    // Getter And Setter
+    public Integer getId() {
+        return id;
+    }
 
-
-    //getter-setter;
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -67,14 +72,6 @@ public class StudentDto implements Serializable {
 
     public void setSurname(String surname) {
         this.surname = surname;
-    }
-
-    public Double getGrade() {
-        return grade;
-    }
-
-    public void setGrade(Double grade) {
-        this.grade = grade;
     }
 
     public LocalDate getBirthDate() {
@@ -93,11 +90,11 @@ public class StudentDto implements Serializable {
         this.createdDate = createdDate;
     }
 
-    public Integer getId() {
-        return id;
+    public Double getGrade() {
+        return grade;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setGrade(Double grade) {
+        this.grade = grade;
     }
-}
+} //end Student
