@@ -25,13 +25,16 @@ public class StudentDto implements Serializable {
     private Integer id;
     private String name;
     private String surname;
-    private LocalDate birthDate;
-    private Date createdDate;
-    private Double grade; // başarı puanı
+    private Double midTerm;
+    private Double finalTerm;
+    private Double resultTerm;
+    private LocalDate birthDate; //dogum gunu
+    private Date createdDate; //sistem otomatik tarihi
+
 
     // static (Nesne boyunca 1 kere oluşturulur)
     static {
-
+        System.out.println("static StudentDto Yüklendi.");
     }
 
     // Parametresiz Constructor
@@ -39,15 +42,31 @@ public class StudentDto implements Serializable {
     }
 
     // Parametreli Constructor
-    public StudentDto(Integer id, String name, String surname, LocalDate birthDate, Double grade) {
+
+    public StudentDto(Integer id, String name, String surname, Double midTerm, Double finalTerm, Double resultTerm, LocalDate birthDate) {
         this.id = id;
         this.name = name;
         this.surname = surname;
+        this.midTerm = midTerm;
+        this.finalTerm = finalTerm;
+        this.resultTerm = calculateResult();
         this.birthDate = birthDate;
-        this.grade = grade;
     }
 
+
+
+
     // Metotlar
+
+        //vize ve final calculate
+    private Double calculateResult() {
+        if(midTerm == null || finalTerm==null)
+            return 0.0;
+        else
+            return (midTerm*0.4 + finalTerm*0.6);
+    }
+
+
 
     // Getter And Setter
     public Integer getId() {
@@ -74,6 +93,32 @@ public class StudentDto implements Serializable {
         this.surname = surname;
     }
 
+    public Double getMidTerm() {
+        return midTerm;
+    }
+
+    public void setMidTerm(Double midTerm) {
+        this.midTerm = midTerm;
+        this.resultTerm = calculateResult();
+    }
+
+    public Double getFinalTerm() {
+        return finalTerm;
+    }
+
+    public void setFinalTerm(Double finalTerm) {
+        this.finalTerm = finalTerm;
+        this.resultTerm = calculateResult();
+    }
+
+    public Double getResultTerm() {
+        return resultTerm;
+    }
+
+    public void setResultTerm(Double resultTerm) {
+        this.resultTerm = resultTerm;
+    }
+
     public LocalDate getBirthDate() {
         return birthDate;
     }
@@ -90,11 +135,4 @@ public class StudentDto implements Serializable {
         this.createdDate = createdDate;
     }
 
-    public Double getGrade() {
-        return grade;
-    }
-
-    public void setGrade(Double grade) {
-        this.grade = grade;
-    }
 } //end Student
