@@ -93,7 +93,7 @@ public class StudentManagementSystem {
                 temp.setName(dto.getName());
                 temp.setSurname(dto.getSurname());
                 temp.setBirthDate(dto.getBirthDate());
-                temp.setGrade(dto.getGrade());
+                temp.set(dto.getGrade());
                 System.out.println("Öğrenci başarıyla güncellendi");
                 saveToFile();
                 return;

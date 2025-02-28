@@ -31,7 +31,7 @@
 
     <packaging>jar</packaging>
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+    <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -39,14 +39,15 @@
         </dependency>
 
 
-        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+    <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.24</version>
+            <version>1.18.30</version>  <!-- Güncelleyerek en son sürümü kullan -->
             <scope>provided</scope>
         </dependency>
     </dependencies>
+
     <build>
         <!--apache tomcat manuel deployment için-->
         <defaultGoal>spring-boot:run</defaultGoal>
