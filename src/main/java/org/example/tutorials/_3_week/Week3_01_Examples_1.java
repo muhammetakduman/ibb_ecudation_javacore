@@ -30,29 +30,19 @@ public class Week3_01_Examples_1 {
 
     //Factorial program run
 
-    private static void runFactorialProgram(){
-        while (true){
-            System.out.println("\n" + "Lütfen bir seçim yapınız:\n1) İteratif Faktöriyel\n2) Özyinelemeli Faktöriyel\n3) Sistem Özellikler\n4) Çıkış\n" );
-            int choice = getUserChoice();
+    private static void runFactorialProgram() {
 
-            switch (choice){
-                case 1 :
-                    long iterativeNumber = getValidPositiveNumber();
-                    measureIterativeFactorial(iterativeNumber);
-                    break;
+    }
 
-                case 2:
-                    long recursiveNumber = getValidPositiveNumber();
-                    if (recursiveNumber > MAX_RECURSIVE_LIMIT){
-                        System.out.println("UYARI : Girilen sayı recursive fonksion için çok büyük! Maksimum");
-                        logger.warning("Recursive fonksiyon sınırı aşıldı:"+ recursiveNumber);
-                    } else {
-                        measureRecursiveFactorial(recursiveNumber);
-                    }
-                    break;
+    private static void measureRecursiveFactorial(long recursiveNumber) {
+    }
 
-            }
-        }
+    private static void measureIterativeFactorial(long iterativeNumber) {
+
+    }
+
+    private static long getValidPositiveNumber() {
+        return 0;
     }
 
     private static int getUserChoice() {

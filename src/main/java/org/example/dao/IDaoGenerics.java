@@ -1,31 +1,34 @@
 package org.example.dao;
 
+import org.example.dto.StudentDto;
+
+import java.io.IOException;
 import java.sql.Connection;
 import java.util.List;
 
-public interface IDaoGenerics {
-    //crud
-    //create
-    T create(T t);
+public interface IDaoGenerics<T> {
+    // CRUD
+    // CREATE
+    T create(T t) throws IOException;
 
-    // find name,ıd
+    // FIND BY NAME,ID
     T findByName(String name);
-    T findById(int id);
+    T  findById(int id);
 
-    //list
+    // LIST
     List<T> list();
 
-    //update
-    T update (int id , T t);
+    // UPDATE
+    T update(int id, T t) throws IOException;
 
-    //delete
-    T delete(int id);
+    // DELETE
+    T delete(int id) throws IOException;
 
-    //chooise
-    void chooise();
+    // CHOOISE
+    void chooise() throws IOException;
 
-    //db connection
-    default Connection getInterfaceConnection(){
+    // DATABASE CONNECTION
+    default Connection getInterfaceConnection() {
         return null;
     }
 }

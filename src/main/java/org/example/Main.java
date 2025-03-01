@@ -1,11 +1,14 @@
 package org.example;
 
+import org.example.controller.StudentController;
+
 public class Main {
-    public static void main(String[] args) {
-        System.out.println("Hello, World!");
-        for ( int i = 1 ; i <= 5 ; i++){
-            System.out.println("i = " + i);
+    public static void main (String[] args){
+        try {
+            StudentController studentController = new StudentController();
+            studentController.chooise();
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 }
-

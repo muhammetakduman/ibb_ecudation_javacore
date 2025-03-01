@@ -21,31 +21,31 @@ import java.util.Date;
 
 public class StudentDto implements Serializable {
 
-    //serileştirme
+    // Serileştirme
     private static final long serialVersionUID = 556364655645656546L;
 
+    // Field
     private Integer id;
     private String name;
     private String surname;
-    private EStudentType eStudentType; //student type enum...
-    private Double midTerm;
-    private Double finalTerm;
-    private Double resultTerm; // %40mid %60final
-    private LocalDate birthDate; //brith
-    private Date createdDate; //system auto
+    private EStudentType eStudentType; // Enum Öğrenci Türü
+    private Double midTerm;      // Vize notu
+    private Double finalTerm;    // Final notu
+    private Double resultTerm;   // Sonuç Notu: (Vize%40 + Final%60)
+    private LocalDate birthDate; // Doğum günü
+    private Date createdDate;    // Sistem otomatik tarihi
 
+    // static (Nesne boyunca 1 kere oluşturulur)
     static {
-        System.out.println(SpecialColor.BLUE + " static StudentDto DOWLOAND" + SpecialColor.RESET);
+        System.out.println(SpecialColor.BLUE+ "static StudentDto Yüklendi"+SpecialColor.RESET);
     }
 
-    //NO PARAM CONSTRUCTOR
-    public StudentDto(){
-
+    // Parametresiz Constructor
+    public StudentDto() {
     }
 
-    //constructor parm;
-
-    public StudentDto (Integer id, String name, String surname, Double midTerm, Double finalTerm, LocalDate birthDate, EStudentType eStudentType) {
+    // Parametreli Constructor
+    public StudentDto(Integer id, String name, String surname, Double midTerm, Double finalTerm, LocalDate birthDate, EStudentType eStudentType) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -56,15 +56,18 @@ public class StudentDto implements Serializable {
         this.resultTerm= calculateResult();
         this.eStudentType= eStudentType;
     }
-    //methods
-    //mid and final calculated
-    private Double calculateResult(){
-        if (midTerm == null || finalTerm == null)
+
+    // Metotlar
+    // Vize ve Final Calculate
+    private Double calculateResult() {
+        if(midTerm==null || finalTerm==null)
             return 0.0;
         else
-            return (midTerm*0.4 + finalTerm*0.6);
+            return (midTerm*0.4+finalTerm*0.6);
     }
 
+    // Getter And Setter
+    // null değilse, isEmptty, harf, sayı göre
     public Integer getId() {
         return id;
     }
@@ -89,39 +92,6 @@ public class StudentDto implements Serializable {
         this.surname = surname;
     }
 
-    public EStudentType geteStudentType() {
-        return eStudentType;
-    }
-
-    public void seteStudentType(EStudentType eStudentType) {
-        this.eStudentType = eStudentType;
-    }
-
-    public Double getMidTerm() {
-        return midTerm;
-    }
-
-    public void setMidTerm(Double midTerm) {
-        this.midTerm = midTerm;
-        this.resultTerm = calculateResult();
-    }
-
-    public Double getFinalTerm() {
-        return finalTerm;
-    }
-
-    public void setFinalTerm(Double finalTerm) {
-        this.finalTerm = finalTerm;
-    }
-
-    public Double getResultTerm() {
-        return resultTerm;
-    }
-
-    public void setResultTerm(Double resultTerm) {
-        this.resultTerm = resultTerm;
-    }
-
     public LocalDate getBirthDate() {
         return birthDate;
     }
@@ -137,4 +107,38 @@ public class StudentDto implements Serializable {
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
     }
-}
+
+    public Double getMidTerm() {
+        return midTerm;
+    }
+
+    public void setMidTerm(Double midTerm) {
+        this.midTerm = midTerm;
+        this.resultTerm= calculateResult();
+    }
+
+    public Double getFinalTerm() {
+        return finalTerm;
+    }
+
+    public void setFinalTerm(Double finalTerm) {
+        this.finalTerm = finalTerm;
+        this.resultTerm= calculateResult();
+    }
+
+    public Double getResultTerm() {
+        return resultTerm;
+    }
+
+    public void setResultTerm(Double resultTerm) {
+        this.resultTerm = resultTerm;
+    }
+
+    public EStudentType geteStudentType() {
+        return eStudentType;
+    }
+
+    public void seteStudentType(EStudentType eStudentType) {
+        this.eStudentType = eStudentType;
+    }
+} //end Student
