@@ -43,6 +43,9 @@ public class StudentDto extends PersonDto implements Serializable {
         this.resultTerm=0.0; // varsayılan olarak
     }
 
+    public StudentDto(int id, String part, String part1, double v, double midTerm, LocalDate parse, EStudentType eStudentType) {
+    }
+
     // toString
     @Override
     public String toString() {
@@ -121,7 +124,6 @@ public class StudentDto extends PersonDto implements Serializable {
 
     public void setResultTerm(Double resultTerm) {
         if(resultTerm ==null){
-            this.resultTerm=0.0;
         }
         this.resultTerm = resultTerm;
     }

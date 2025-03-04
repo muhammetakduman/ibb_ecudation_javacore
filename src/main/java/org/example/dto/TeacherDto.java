@@ -1,14 +1,14 @@
 package org.example.dto;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 
 /**
  *
- * @param personDto
  * @param subject
  * @param yearsOfExperience
- * @param isTerured
+ * @param isTenured
  * @param salary
  * *TeachDto bi record olarak tanımlanmıştır
  * * Record'lar Javada Immutable değiştililmez , data trasnfer için kullanılır
@@ -18,24 +18,30 @@ import java.io.Serializable;
 
  */
 public record TeacherDto (
-        PersonDto personDto, //PersonDto(composition) içindeki ortak alanalrı kullanır
-        String subject, //Öğretmenin uzmanlık Alanı
-        int yearsOfExperience, // Öğretmenin toplam deneyim yılı
-        boolean isTerured , // Kadrolumu (true , false)
-        double salary //Öğretmenin maaşı
+        Integer id,
+        String name,
+        String surname,
+        LocalDate birthDate,
+        String subject,
+        int yearsOfExperience,
+        boolean isTenured,
+        double salary
+
 ) implements Serializable {
 
 
 
-    public TeacherDto{
-        if (personDto == null) throw new IllegalArgumentException("Teacherde person biligisi boş geçilmez");
-        if (subject ==null || subject.isBlank() || subject.isEmpty()) throw new IllegalArgumentException("Uzmanlık alanını boş geçtiniz");
-        if (yearsOfExperience < 0) throw  new IllegalArgumentException("'0' dan küçük deneyim olmaz.");
-        if (salary <= 0 ) throw new IllegalArgumentException("Maaş negatif veya '0' olamaz");
-
+    public TeacherDto {
+        if (id == null || id < 0) throw new IllegalArgumentException("ID negatif olamaz");
+        if (name == null || name.isBlank()) throw new IllegalArgumentException("İsim boş olamaz");
+        if (surname == null || surname.isBlank()) throw new IllegalArgumentException("Soyisim boş olamaz");
+        if (birthDate == null) throw new IllegalArgumentException("Doğum tarihi boş olamaz");
+        if (subject == null || subject.isBlank()) throw new IllegalArgumentException("Uzmanlık alanı boş olamaz");
+        if (yearsOfExperience < 0) throw new IllegalArgumentException("Deneyim yılı negatif olamaz");
+        if (salary < 0) throw new IllegalArgumentException("Maaş negatif olamaz");
     }
     public String fullName(){
-        return personDto.id + " " + personDto.name + " " + personDto.surname;
+        return  name + " " + surname;
     }
     public String experinceLevel(){
         return (yearsOfExperience > 10) ? "Kıdemli Öğretmen" : "Yeni Öğretmen";
