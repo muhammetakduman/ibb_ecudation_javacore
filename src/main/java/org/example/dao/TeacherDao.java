@@ -145,4 +145,9 @@ public class TeacherDao implements IDaoGenerics<TeacherDto> {
         return teacher.orElseThrow(() -> new TeacherNotFoundException(id + "id'li öğretmen bulunmadı"));
     }
 
+    @Override
+    public void chooise() throws IOException {
+        return;
+    }
+
 }
