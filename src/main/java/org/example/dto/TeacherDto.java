@@ -25,6 +25,8 @@ public record TeacherDto (
         double salary //Öğretmenin maaşı
 ) implements Serializable {
 
+
+
     public TeacherDto{
         if (personDto == null) throw new IllegalArgumentException("Teacherde person biligisi boş geçilmez");
         if (subject ==null || subject.isBlank() || subject.isEmpty()) throw new IllegalArgumentException("Uzmanlık alanını boş geçtiniz");
