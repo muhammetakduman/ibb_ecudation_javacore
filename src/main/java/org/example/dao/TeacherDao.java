@@ -6,6 +6,7 @@ import org.example.exceptions.TeacherNotFoundException;
 
 import java.io.*;
 import java.security.PublicKey;
+import java.security.SignedObject;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -147,7 +148,102 @@ public class TeacherDao implements IDaoGenerics<TeacherDto> {
 
     @Override
     public void chooise() throws IOException {
-        return;
+        while (true){
+            try {
+                System.out.println("\n ~~~~~ ÖĞRETMEN YÖNETİM SİSTEMİ ~~~~");
+                System.out.println("1. Öğretmen Ekle");
+                System.out.println("2. Öğretmen Listele");
+                System.out.println("3. Öğretmen Ara");
+                System.out.println("4. Öğretmen Güncelle");
+                System.out.println("5. Öğretmen Sil");
+                System.out.println("6. Rastgele Öğretmen Seç");
+                System.out.println("7. Öğretmenleri Yaşa Göre Sırala");
+                System.out.println("8. Çıkış");
+                System.out.println("\nSeçiminizi yapınız ");
+
+                int choice = scanner.nextInt();
+                scanner.nextLine();
+                switch (choice){
+                    case 1 -> addTeacher();
+                    case 2 -> listTeacher();
+                    case 3 -> searchTeacher();
+                    case 4 -> updateTeacher();
+                    case 5 -> deleteTeacher();
+                    case 6 -> chooseRandomTeacher();
+                    case 7 -> sortTeachersByage();
+                    case 8 -> {
+                        System.out.println("Çıkış yapılıyor ...");
+                        return;
+                    }
+                    default -> System.out.println("Geçersiz seçim! Lütfen tekrar deneyin.");
+                }
+            } catch (Exception e){
+                System.out.println("⛔ Beklenmeyen bir hata oluştu: " + e.getMessage());
+                scanner.nextLine();
+
+            }
+        }
     }
+    private void addTeacher() {
+        try {
+            System.out.println("Öğretmen ID:");
+            int id = scanner.nextInt();
+            scanner.nextLine();
+
+            System.out.println("Adı:");
+            String name = scanner.nextLine();
+
+            System.out.println("Soyadı :");
+            String surname =scanner.nextLine();
+
+            System.out.println("Doğum tarihi(yyyy-MM-dd");
+            LocalDate birthDate = LocalDate.parse(scanner.nextLine(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+
+            System.out.print("Uzmanlık Alanı: ");
+            String subject = scanner.nextLine();
+
+            System.out.print("Deneyim Yılı: ");
+            int yearsOfExperience = scanner.nextInt();
+
+            System.out.print("Kadrolu mu? (true/false): ");
+            boolean isTenured = scanner.nextBoolean();
+
+            System.out.print("Maaş: ");
+            double salary = scanner.nextDouble();
+
+            TeacherDto teacher = new TeacherDto(id ,name , surname ,birthDate, subject,yearsOfExperience, isTenured,salary);
+            teacherList.add(teacher);
+            saveTofile();
+            System.out.println("Öğretmen başarılı şekilde eklendi");
+        } catch (Exception e) {
+            System.err.println("Öğretmen eklenirken bir hara oluştu." + e.getMessage());
+        }
+
+
+    }
+    private void listTeacher() {
+        try {
+            if (teacherList.isEmpty()){
+                System.out.println("Katılı öğretmen bulunmamaktadır.");
+            } else {
+                System.out.println("\n ===ÖĞRETMEN LİSTESİ ===");
+                teacherList.forEach(t -> System.out.println(t.fullName() + "-" + t.subject()));
+
+            }
+        } catch (TeacherNotFoundException e){
+
+        }
+    }
+    private void searchTeacher(){
+        System.out.println("Aranacak öğretmenin adı :");
+        String name = scanner.nextLine();
+        try{
+            TeacherDto teacher = findByName(name);
+            System.out.println("Bulunan öğretmen" + teacher.fullName() +" - "+ teacher.subject());
+        } catch (TeacherNotFoundException e){
+            System.out.println(e.getMessage());
+        }
+    }
+
 
 }
