@@ -1,0 +1,1 @@
+25,mami,mamiş,1111-11-11,BIOLOGY,5,false,45000.0

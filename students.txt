@@ -1,0 +1,2 @@
+1,mami,q,70.0,80.0,76.0,Kaldı,1248-04-30,UNDERGRADUATE
+2,hilal,meriç,60.0,80.0,72.0,Geçti,1234-02-02,GRADUATE

@@ -22,7 +22,7 @@ public record TeacherDto (
         String name,
         String surname,
         LocalDate birthDate,
-        String subject,
+        ETeacherSubject subject,
         int yearsOfExperience,
         boolean isTenured,
         double salary
@@ -36,7 +36,7 @@ public record TeacherDto (
         if (name == null || name.isBlank()) throw new IllegalArgumentException("İsim boş olamaz");
         if (surname == null || surname.isBlank()) throw new IllegalArgumentException("Soyisim boş olamaz");
         if (birthDate == null) throw new IllegalArgumentException("Doğum tarihi boş olamaz");
-        if (subject == null || subject.isBlank()) throw new IllegalArgumentException("Uzmanlık alanı boş olamaz");
+        if (subject == null ) throw new IllegalArgumentException("Uzmanlık alanı boş olamaz");
         if (yearsOfExperience < 0) throw new IllegalArgumentException("Deneyim yılı negatif olamaz");
         if (salary < 0) throw new IllegalArgumentException("Maaş negatif olamaz");
     }
@@ -44,7 +44,7 @@ public record TeacherDto (
         return  name + " " + surname;
     }
     public String experinceLevel(){
-        return (yearsOfExperience > 10) ? "Kıdemli Öğretmen" : "Yeni Öğretmen";
+        return (yearsOfExperience > 10) ? "Kıdemli Öğretmen" : "Deneyimli Öğretmen";
     }
 
 }
