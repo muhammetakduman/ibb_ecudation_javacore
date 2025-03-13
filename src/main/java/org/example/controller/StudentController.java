@@ -6,6 +6,7 @@ import org.example.dto.StudentDto;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 public class StudentController implements IDaoGenerics<StudentDto> {
 
@@ -25,12 +26,12 @@ public class StudentController implements IDaoGenerics<StudentDto> {
 
     // FIND BY NAME
     @Override
-    public StudentDto findByName(String name) {
+    public Optional<StudentDto> findByName(String name) {
         return studentDao.findByName(name);
     }
 
     @Override
-    public StudentDto findById(int id) {
+    public Optional<StudentDto> findById(int id) {
         return null;
     }
 
@@ -42,15 +43,18 @@ public class StudentController implements IDaoGenerics<StudentDto> {
 
     // UPDATE
     @Override
-    public StudentDto update(int id, StudentDto studentDto) throws IOException {
+    public Optional<StudentDto> update(int id, StudentDto studentDto) throws IOException {
         return studentDao.update(id, studentDto);
     }
 
     // DELETE
     @Override
-    public StudentDto delete(int id) throws IOException {
+    public Optional<StudentDto> delete(int id) throws IOException {
         return studentDao.delete(id);
     }
+
+
+
 
     // CHOOISE(Switch-case)
     @Override
