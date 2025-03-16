@@ -7,10 +7,9 @@ abstract public class PersonDto {
     protected Integer id;
     protected String name;
     protected String surname;
-    //protected String email;
-    //protected String password;
     protected LocalDate birthDate;
     protected Date createdDate;
+
 
 //haven't params in constructor
     public PersonDto() {

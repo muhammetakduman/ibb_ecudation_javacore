@@ -2,13 +2,10 @@ package org.example.dao;
 
 
 import org.example.dto.TeacherDto;
-import org.example.dto.EStudentType;
 import org.example.exceptions.TeacherNotFoundException;
 import org.example.dto.ETeacherSubject;
 import org.example.utils.SpecialColor;
 
-import javax.swing.text.html.Option;
-import java.io.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -127,7 +124,7 @@ public class TeacherDao implements IDaoGenerics<TeacherDto> {
     // C-R-U-D
     // Öğretmen Ekle
     @Override
-    public Optional<TeacherDto> create(TeacherDto teacher) {
+    public TeacherDto create(TeacherDto teacher) {
         teacher = new TeacherDto(
                 ++maxId, // Yeni öğretmene maxId'nin 1 fazlasını ata
                 teacher.name(),

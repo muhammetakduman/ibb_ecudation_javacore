@@ -31,22 +31,59 @@
 
     <packaging>jar</packaging>
     <dependencies>
-    <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+
+        <!-- SLF4J API (Logging için) -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>[2.0.0,)</version>
+        </dependency>
+
+        <!-- Logback (SLF4J için önerilen implementation) -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>[1.4.0,)</version>
+        </dependency>
+
+        <!-- Jackson (JSON ile loglama yapmak istersen) -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>[2.15.0,)</version>
+        </dependency>
+
+        <!-- Java Cryptography Extension (JCE) İçin Gerekli -->
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>[2.3.7,)</version>
+        </dependency>
+
+        <!-- Java'da Şifreleme (AES) İçin Apache Commons Codec -->
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>[1.18.0,)</version>
+        </dependency>
+
+        <!-- RDBMS MYSQL-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.28</version>
+            <version>[8.0.33,)</version>
         </dependency>
 
-
-    <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <!-- Lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.30</version>  <!-- Güncelleyerek en son sürümü kullan -->
+            <version>[1.18.30,)</version>
             <scope>provided</scope>
         </dependency>
+
     </dependencies>
+
 
     <build>
         <!--apache tomcat manuel deployment için-->

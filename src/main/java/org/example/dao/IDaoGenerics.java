@@ -30,6 +30,7 @@ public interface IDaoGenerics<T> {
 
     // DATABASE CONNECTION
     default Connection getInterfaceConnection() {
+
         return null;
     }
 }
