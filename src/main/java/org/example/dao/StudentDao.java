@@ -1,6 +1,7 @@
 package org.example.dao;
 
-import org.example.dto.EStudentType;
+import org.example.utils.ERole;
+import org.example.utils.EStudentType;
 import org.example.dto.StudentDto;
 import org.example.exceptions.StudentNotFoundException;
 import org.example.utils.SpecialColor;
@@ -132,7 +133,8 @@ public class StudentDao implements IDaoGenerics<StudentDto> {
                     LocalDate.parse(parts[3]),    // Doğum tarihini LocalDate formatına çevirir
                     Double.parseDouble(parts[4]), // Vize notunu double olarak dönüştürür
                     Double.parseDouble(parts[5]), // Final notunu double olarak dönüştürür
-                    EStudentType.valueOf(parts[8]) // Öğrencinin eğitim türünü (Enum) çevirir
+                    EStudentType.valueOf(parts[8]), // Öğrencinin eğitim türünü (Enum) çevirir
+                    ERole.valueOf(parts[9])
             );
 
             // **Geçti/Kaldı durumu CSV'den okunduğu gibi öğrenci nesnesine eklenir**
@@ -461,7 +463,7 @@ public class StudentDao implements IDaoGenerics<StudentDto> {
 
                 // 📌 Öğrenci nesnesini oluştur
                 // Integer id, String name, String surname, LocalDate birthDate,Double midTerm, Double finalTerm,EStudentType eStudentType
-                StudentDto newStudent = new StudentDto(maxId, name, surname,birthDate, midTerm, finalTerm, studentType);
+                StudentDto newStudent = new StudentDto(maxId, name, surname,birthDate, midTerm, finalTerm, studentType,ERole.STUDENT);
                 StudentDto createdStudent = create(newStudent);
 
                 if (createdStudent != null) {
@@ -521,7 +523,7 @@ public class StudentDao implements IDaoGenerics<StudentDto> {
         double finalTermUpdate = scanner.nextDouble();
 
         //  // Integer id, String name, String surname, LocalDate birthDate,Double midTerm, Double finalTerm,EStudentType eStudentType
-        StudentDto studentUpdate = new StudentDto(id, nameUpdate, surnameUpdate,birthDateUpdate, midTermUpdate, finalTermUpdate, studentTypeMethod());
+        StudentDto studentUpdate = new StudentDto(id, nameUpdate, surnameUpdate,birthDateUpdate, midTermUpdate, finalTermUpdate, studentTypeMethod(),ERole.STUDENT);
         try {
             update(id, studentUpdate);
             System.out.println("Öğrenci başarıyla güncellendi.");

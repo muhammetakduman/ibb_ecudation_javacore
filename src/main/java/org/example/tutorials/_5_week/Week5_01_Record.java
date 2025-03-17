@@ -1,6 +1,6 @@
 package org.example.tutorials._5_week;
 
-import org.example.dto.EStudentType;
+import org.example.utils.EStudentType;
 
 import java.io.Serializable;
 import java.time.LocalDate;
